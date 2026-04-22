@@ -476,23 +476,63 @@ document.addEventListener("DOMContentLoaded", () => {
     window.counterObserverTriggered = true;
   }, 1000);
 });
-// Edit avatar button with image URL instead of Base64
-if (editBtn && adminStatus) {
-    editBtn.addEventListener('click', () => {
-        // بدل رفع ملف، نطلب رابط الصورة
-        const imageUrl = prompt('أدخل رابط الصورة (URL):\nمثال: https://example.com/photo.jpg\n\nيمكنك استخدام:\n- Imgur.com\n- PostImages.org\n- Google Drive (رابط عام)');
+// ========== تحميل الصورة والاسم من الكود (بدون رفع) ==========
+function initAvatarAndNameEditing() {
+    
+    // تحميل الصورة من الكود أو localStorage
+    function loadSavedAvatar() {
+        const savedAvatar = localStorage.getItem('hussein_avatar');
+        const avatarImage = document.getElementById('avatarImage');
+        const avatarLetter = document.getElementById('avatarLetter');
         
-        if (imageUrl && imageUrl.trim() !== '') {
-            const avatarImage = document.getElementById('avatarImage');
-            const avatarLetter = document.getElementById('avatarLetter');
-            
-            avatarImage.src = imageUrl;
+        // إذا كان فيه صورة محفوظة استخدمها، وإلا استخدم الصورة من الكود
+        if (savedAvatar && savedAvatar !== '') {
+            avatarImage.src = savedAvatar;
             avatarImage.style.display = 'block';
             avatarLetter.style.display = 'none';
-            
-            // حفظ الرابط فقط (مساحة صغيرة جداً)
-            localStorage.setItem('hussein_avatar', imageUrl);
-            showToastMessage('تم تحديث الصورة بنجاح!', 'success');
+        } else if (PROFILE_IMAGE_URL && PROFILE_IMAGE_URL !== '') {
+            // استخدم الصورة من الكود
+            avatarImage.src = PROFILE_IMAGE_URL;
+            avatarImage.style.display = 'block';
+            avatarLetter.style.display = 'none';
+        } else {
+            avatarImage.style.display = 'none';
+            avatarLetter.style.display = 'flex';
         }
-    });
+    }
+    
+    // تحميل الاسم من الكود أو localStorage
+    function loadSavedName() {
+        const savedName = localStorage.getItem('hussein_name');
+        const userNameSpan = document.getElementById('userName');
+        
+        if (savedName && userNameSpan) {
+            userNameSpan.textContent = savedName;
+        } else if (DEVELOPER_NAME && userNameSpan) {
+            userNameSpan.textContent = DEVELOPER_NAME;
+        }
+    }
+    
+    // إخفاء زر تعديل الصورة (لأن التعديل من الكود فقط)
+    const editBtn = document.getElementById('editAvatarBtn');
+    if (editBtn) {
+        editBtn.style.display = 'none';
+    }
+    
+    // إخفاء مربع رفع الصور
+    const avatarUpload = document.getElementById('avatarUpload');
+    if (avatarUpload) {
+        avatarUpload.style.display = 'none';
+    }
+    
+    // جعل الاسم غير قابل للتعديل من الواجهة
+    const userNameSpan = document.getElementById('userName');
+    if (userNameSpan) {
+        userNameSpan.style.cursor = 'default';
+        userNameSpan.style.pointerEvents = 'none';
+    }
+    
+    // تحميل البيانات
+    loadSavedAvatar();
+    loadSavedName();
 }
