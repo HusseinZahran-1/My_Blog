@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects Gallery | Hussein</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="logo">HUSSEIN<span class="logo-dot">.</span></div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="index.html#about" class="nav-link">ABOUT</a>
+            <a href="projects.html" class="nav-link active">GALLERY</a>
+            <a href="index.html#contact" class="nav-link">CONTACT</a>
+            <a href="admin/login.html" class="nav-link admin-link">ADMIN</a>
+        </div>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="container">
+        <h1 class="page-title">ALL<span class="gradient-text">_PROJECTS</span></h1>
+        
+        <!-- Search Bar -->
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search projects by title or description...">
+                <button id="clearSearch" class="clear-search-btn">✕</button>
+            </div>
+        </div>
+        
+        <!-- Tag Filters -->
+        <div class="filters-section">
+            <div class="filter-label">FILTER BY TAG:</div>
+            <div class="tag-filters" id="tagFilters">
+                <button class="filter-btn active" data-tag="all">ALL</button>
+                <button class="filter-btn" data-tag="AI">AI</button>
+                <button class="filter-btn" data-tag="Web">WEB</button>
+                <button class="filter-btn" data-tag="ML">ML</button>
+                <button class="filter-btn" data-tag="Data Science">DATA</button>
+                <button class="filter-btn" data-tag="Python">PYTHON</button>
+                <button class="filter-btn" data-tag="Backend">BACKEND</button>
+                <button class="filter-btn" data-tag="Security">SECURITY</button>
+                <button class="filter-btn" data-tag="Creative">CREATIVE</button>
+            </div>
+        </div>
+        
+        <!-- Results Count -->
+        <div class="projects-count" id="projectsCount">SHOWING 0 PROJECTS</div>
+    </div>
+</section>
+
+<section class="projects-gallery">
+    <div class="container">
+        <div class="projects-grid" id="projectsGrid"></div>
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <p>NO PROJECTS FOUND</p>
+            <p class="empty-sub">Try adjusting your search or filter criteria</p>
+            <button class="btn-primary" id="resetFilters">RESET ALL FILTERS</button>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>© 2026 HUSSEIN | <a href="admin/login.html" class="admin-link-footer">ADMIN PANEL</a></p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/projects.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | Hussein</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="admin-body">
+
+
+
+<canvas id="loginCanvas" class="login-canvas"></canvas>
+
+<div class="login-container">
+    <div class="login-card">
+        <div class="shield-icon">
+            <div class="shield-ring"></div>
+            <span>⚡</span>
+        </div>
+        <h2>HUSSEIN_ADMIN</h2>
+        <p class="login-sub">authorization required</p>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <label>USERNAME</label>
+                <input type="text" id="username" autocomplete="off" placeholder="Enter username">
+            </div>
+            <div class="input-group">
+                <label>PASSWORD</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="Enter password">
+                    <button type="button" id="togglePassword" class="toggle-pwd">SHOW</button>
+                </div>
+            </div>
+            <button type="submit" class="btn-primary login-btn">AUTHENTICATE</button>
+        </form>
+        <!-- <div class="demo-hint">Demo credentials: admin / hussein2025</div> -->
+        <a href="../index.html" class="back-link">← BACK TO SITE</a>
+    </div>
+    <div id="errorMsg" class="error-toast" style="display: none;">INVALID CREDENTIALS</div>
+</div>
+
+<script src="../js/data.js"></script>
+<script src="../js/canvas.js"></script>
+<script src="../js/admin-auth.js"></script>
+</body>
+</html>

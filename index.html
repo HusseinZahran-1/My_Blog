@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hussein | Developer Portfolio</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+
+        <div class="loader-overlay" id="loader">
+            <div class="loader-content">
+                <div class="loader-letter">H</div>
+                <div class="loader-progress-bar">
+                    <div class="loader-progress-fill"></div>
+                </div>
+                <div class="loader-text">INITIALIZING</div>
+            </div>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="logo">HUSSEIN<span class="logo-dot">.</span></div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link active">HOME</a>
+                    <a href="#about" class="nav-link">ABOUT</a>
+                    <a href="#projects" class="nav-link">PROJECTS</a>
+                    <a href="#contact" class="nav-link">CONTACT</a>
+                    <a href="projects.html" class="nav-link">GALLERY</a>
+                    <a href="admin/login.html"
+                        class="nav-link admin-link">ADMIN</a>
+                </div>
+                <div class="burger" id="burger">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero" id="hero">
+            <canvas id="heroCanvas" class="hero-canvas"></canvas>
+            <div class="hero-bg-glow"></div>
+
+            <div class="floating-card fc1"></div>
+            <div class="floating-card fc2"></div>
+            <div class="floating-card fc3"></div>
+            <div class="floating-card fc4"></div>
+
+            <div class="hero-content" id="heroContent">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    AVAILABLE FOR WORK
+                </div>
+                <h1 class="hero-title">BUILD THE FUTURE<br><span
+                        class="gradient-text">by Hussein</span></h1>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">VIEW WORK</a>
+                    <a href="#contact" class="btn-ghost">CONTACT ME</a>
+                </div>
+                <!-- In the hero-stats section, update to show % for satisfaction -->
+                <div class="hero-stats" id="heroStats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="0">0</span>
+                        <span class="stat-label">PROJECTS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="3">0</span>
+                        <span class="stat-label">YEARS STUDYING</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="25">0%</span>
+                        <span class="stat-label">SATISFACTION</span>
+                    </div>
+                </div>
+                <div class="scroll-hint">
+                    <div class="scroll-line"></div>
+                    <span>SCROLL</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about" id="about">
+            <div class="container">
+                <h2 class="section-title reveal">ABOUT<span
+                        class="accent">_ME</span></h2>
+                <div class="about-grid">
+                    <div class="about-avatar reveal">
+                        <div class="avatar-wrapper" id="avatarWrapper">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar-ring2"></div>
+                            <div class="avatar-inner" id="avatarInner">
+                                <img id="avatarImage" class="avatar-image" src
+                                    alt="Profile" style="display: none;">
+                                <span id="avatarLetter"
+                                    class="avatar-letter">H</span>
+                            </div>
+                            <button class="edit-avatar-btn" id="editAvatarBtn"
+                                style="display: none;"
+                                title="Upload photo (Admin only)">✎</button>
+                        </div>
+                        <input type="file" id="avatarUpload"
+                            accept="image/jpeg,image/png,image/gif"
+                            style="display: none;">
+                        <div id="adminEditHint" class="admin-hint"
+                            style="display: none; text-align: center; margin-top: 10px; font-size: 11px; color: var(--purple-light);">
+                            🔒 Admin only: Click ✎ to change photo
+                        </div>
+                    </div>
+                    <div class="about-text reveal">
+                        <p>I'm <span class="glow-text">Hussein</span>, an
+                            AI enthusiast crafting
+                            digital experiences at the intersection of code and
+                            creativity. </p>
+                        <div class="skills-grid">
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">JavaScript</div>
+                            <div class="skill-item">HTML</div>
+                            <div class="skill-item">CSS</div>
+                            <div class="skill-item">TensorFlow</div>
+                            <div class="skill-item">Jupyter-Notebook</div>
+                            <div class="skill-item">Machine-Learning</div>
+                            <div class="skill-item">Deep-Learning</div>
+                            <div class="skill-item">Neural-Networks</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section projects" id="projects">
+            <div class="container">
+                <h2 class="section-title reveal">FEATURED<span
+                        class="accent">_WORK</span></h2>
+                <div class="projects-grid" id="featuredGrid"></div>
+                <div class="view-all">
+                    <a href="projects.html" class="btn-ghost">VIEW ALL PROJECTS
+                        →</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contact">
+            <div class="container">
+                <h2 class="section-title reveal">CONTACT<span
+                        class="accent">_ME</span></h2>
+                <div class="contact-links reveal">
+                    <a href="mailto:hussein@dev.com"
+                        class="contact-btn">EMAIL</a>
+                    <a href="#" class="contact-btn">GITHUB</a>
+                    <a href="#" class="contact-btn">LINKEDIN</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 HUSSEIN | <a href="admin/login.html"
+                    class="admin-link-footer">ADMIN PANEL</a></p>
+        </footer>
+
+        <script src="js/data.js"></script>
+        <script src="js/canvas.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

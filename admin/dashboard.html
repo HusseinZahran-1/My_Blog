@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Hussein</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body class="dashboard-body">
+
+<div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-logo">HUSSEIN<span>ADMIN</span></div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active">📊 DASHBOARD</a>
+            <a href="../projects.html" class="nav-item">🎯 VIEW SITE</a>
+        </nav>
+        <button class="logout-btn-side" id="logoutBtnSide">🚪 LOGOUT</button>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="top-bar">
+            <h2>PROJECTS MANAGEMENT</h2>
+            <div class="top-actions">
+                <a href="../projects.html" class="view-link">VIEW SITE</a>
+                <button class="logout-btn" id="logoutBtnTop">LOGOUT</button>
+            </div>
+        </div>
+        
+        <!-- Stats Cards -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value" id="totalProjects">0</div>
+                <div class="stat-label">TOTAL PROJECTS</div>
+                <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="featuredCount">0</div>
+                <div class="stat-label">FEATURED</div>
+                <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="techCount">0</div>
+                <div class="stat-label">TECHNOLOGIES</div>
+                <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="demoCount">0</div>
+                <div class="stat-label">LIVE DEMOS</div>
+                <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+            </div>
+        </div>
+        
+        <!-- Controls -->
+        <div class="admin-controls">
+            <input type="text" id="adminSearch" placeholder="🔍 Filter projects by title..." class="search-admin">
+            <button class="btn-primary" id="addProjectBtn">+ ADD NEW PROJECT</button>
+        </div>
+        
+        <!-- Projects Table -->
+        <div class="table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>TITLE</th>
+                        <th>DESCRIPTION</th>
+                        <th>TAGS</th>
+                        <th>FEATURED</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody"></tbody>
+            </table>
+            <div class="table-footer" id="tableFooter">0 records</div>
+        </div>
+    </main>
+</div>
+
+<!-- Add/Edit Project Modal -->
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">ADD NEW PROJECT</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        
+        <form id="projectForm">
+            <input type="hidden" id="projectId">
+            
+            <div class="form-group">
+                <label>PROJECT TITLE *</label>
+                <input type="text" id="projTitle" placeholder="e.g., NEURAL CANVAS" required>
+            </div>
+            
+            <div class="form-group">
+                <label>DESCRIPTION *</label>
+                <textarea id="projDesc" rows="4" placeholder="Describe your project..."></textarea>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>GITHUB URL</label>
+                    <input type="text" id="projGithub" placeholder="https://github.com/...">
+                </div>
+                <div class="form-group">
+                    <label>DEMO URL</label>
+                    <input type="text" id="projDemo" placeholder="https://...">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>IMAGE URL (optional)</label>
+                <input type="text" id="projImage" placeholder="https://via.placeholder.com/300">
+            </div>
+            
+            <div class="form-group">
+                <label>TAGS / TECHNOLOGIES</label>
+                <div class="quick-tags">
+                    <button type="button" data-quick="AI" class="quick-tag">AI</button>
+                    <button type="button" data-quick="Web" class="quick-tag">Web</button>
+                    <button type="button" data-quick="ML" class="quick-tag">ML</button>
+                    <button type="button" data-quick="Python" class="quick-tag">Python</button>
+                    <button type="button" data-quick="Backend" class="quick-tag">Backend</button>
+                    <button type="button" data-quick="Security" class="quick-tag">Security</button>
+                    <button type="button" data-quick="Data Science" class="quick-tag">Data Science</button>
+                    <button type="button" data-quick="Creative" class="quick-tag">Creative</button>
+                </div>
+                <div class="tag-input-wrapper">
+                    <input type="text" id="tagInput" placeholder="Type a tag and press Enter">
+                </div>
+                <div id="selectedTags" class="selected-tags"></div>
+            </div>
+            
+            <div class="form-group checkbox">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="featuredCheck">
+                    <span class="checkbox-text">FEATURED PROJECT (appears on homepage)</span>
+                </label>
+            </div>
+            
+            <div class="modal-actions">
+                <button type="button" class="btn-ghost close-modal">CANCEL</button>
+                <button type="submit" class="btn-primary">SAVE PROJECT</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content delete-modal">
+        <div class="modal-header">
+            <h3>DELETE PROJECT</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="delete-icon">⚠️</div>
+        <p>Are you sure you want to delete this project?</p>
+        <p class="delete-warning">This action cannot be undone.</p>
+        <div class="delete-actions">
+            <button id="cancelDeleteBtn" class="btn-ghost">CANCEL</button>
+            <button id="confirmDeleteBtn" class="btn-danger">DELETE</button>
+        </div>
+    </div>
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+
+<script src="../js/data.js"></script>
+<script src="../js/admin-dashboard.js"></script>
+</body>
+</html>
