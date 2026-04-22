@@ -91,21 +91,17 @@
                             <div class="avatar-ring"></div>
                             <div class="avatar-ring2"></div>
                             <div class="avatar-inner" id="avatarInner">
-                                <img id="avatarImage" class="avatar-image" src
-                                    alt="Profile" style="display: none;">
-                                <span id="avatarLetter"
-                                    class="avatar-letter">H</span>
+                                <!-- ========== ضع رابط صورتك هنا ========== -->
+                                <img id="avatarImage" class="avatar-image"
+                                    src="https://i.imgur.com/KsuND9g.jpeg"
+                                    alt="Profile">
+                                <!-- الصورة الافتراضية: غيّر الرابط إلى صورتك -->
+                                <!-- مثال: src="images/my-photo.jpg" -->
+                                <!-- مثال: src="https://i.imgur.com/your-photo.jpg" -->
+                                <!-- ===================================== -->
+                                <span id="avatarLetter" class="avatar-letter"
+                                    style="display: none;">H</span>
                             </div>
-                            <button class="edit-avatar-btn" id="editAvatarBtn"
-                                style="display: none;"
-                                title="Upload photo (Admin only)">✎</button>
-                        </div>
-                        <input type="file" id="avatarUpload"
-                            accept="image/jpeg,image/png,image/gif"
-                            style="display: none;">
-                        <div id="adminEditHint" class="admin-hint"
-                            style="display: none; text-align: center; margin-top: 10px; font-size: 11px; color: var(--purple-light);">
-                            🔒 Admin only: Click ✎ to change photo
                         </div>
                     </div>
                     <div class="about-text reveal">
@@ -148,8 +144,11 @@
                 <div class="contact-links reveal">
                     <a href="mailto:husseinzahran05@gmail.com"
                         class="contact-btn">EMAIL</a>
-                    <a href="https://github.com/HusseinZahran-1" class="contact-btn">GITHUB</a>
-                    <a href="https://www.linkedin.com/in/hussein-zahran-911481358/" class="contact-btn">LINKEDIN</a>
+                    <a href="https://github.com/HusseinZahran-1"
+                        class="contact-btn">GITHUB</a>
+                    <a
+                        href="https://www.linkedin.com/in/hussein-zahran-911481358/"
+                        class="contact-btn">LINKEDIN</a>
                 </div>
             </div>
         </section>
@@ -162,5 +161,26 @@
         <script src="js/data.js"></script>
         <script src="js/canvas.js"></script>
         <script src="js/main.js"></script>
+        <script>
+    // ========== كود إضافي لتثبيت الصورة من HTML مباشرة ==========
+    document.addEventListener('DOMContentLoaded', function() {
+        // الصورة موجودة بالفعل في HTML في src حق img
+        // نضمن أنها تظهر بشكل صحيح
+        const avatarImage = document.getElementById('avatarImage');
+        const avatarLetter = document.getElementById('avatarLetter');
+        
+        if (avatarImage && avatarImage.src && avatarImage.src !== '') {
+            avatarImage.style.display = 'block';
+            if (avatarLetter) avatarLetter.style.display = 'none';
+        }
+        
+        // الاسم موجود في HTML
+        const userName = document.getElementById('userName');
+        if (userName && userName.textContent) {
+            // الاسم جاهز من HTML
+            console.log('Name loaded from HTML:', userName.textContent);
+        }
+    });
+</script>
     </body>
 </html>
