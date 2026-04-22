@@ -476,3 +476,23 @@ document.addEventListener("DOMContentLoaded", () => {
     window.counterObserverTriggered = true;
   }, 1000);
 });
+// Edit avatar button with image URL instead of Base64
+if (editBtn && adminStatus) {
+    editBtn.addEventListener('click', () => {
+        // بدل رفع ملف، نطلب رابط الصورة
+        const imageUrl = prompt('أدخل رابط الصورة (URL):\nمثال: https://example.com/photo.jpg\n\nيمكنك استخدام:\n- Imgur.com\n- PostImages.org\n- Google Drive (رابط عام)');
+        
+        if (imageUrl && imageUrl.trim() !== '') {
+            const avatarImage = document.getElementById('avatarImage');
+            const avatarLetter = document.getElementById('avatarLetter');
+            
+            avatarImage.src = imageUrl;
+            avatarImage.style.display = 'block';
+            avatarLetter.style.display = 'none';
+            
+            // حفظ الرابط فقط (مساحة صغيرة جداً)
+            localStorage.setItem('hussein_avatar', imageUrl);
+            showToastMessage('تم تحديث الصورة بنجاح!', 'success');
+        }
+    });
+}
