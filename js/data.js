@@ -1,15 +1,13 @@
 // DATA LAYER - Single source of truth
-const ADMIN_CREDS = { username: 'admin', password: 'Hh12@3456' };
+const ADMIN_CREDS = { username: 'admin', password: 'hussein2025' };
 
-// ========== صورة البروفايل - ضع رابط صورتك هنا ==========
-// يمكنك تغيير هذا الرابط إلى صورتك الشخصية
-const PROFILE_IMAGE_URL = 'https://imgur.com/a/pMJRNKa';
-// أو استخدم صورة محلية: 'images/profile.jpg'
-// أو استخدم رابط من Imgur: 'https://i.imgur.com/your-image.jpg'
-// =====================================================
+// ========== معلومات المطور ==========
+// ضع رابط صورتك هنا (غير هذا الرابط إلى صورتك)
+const PROFILE_IMAGE_URL = 'https://i.imgur.com/KsuND9g.jpeg';
 
-// اسم المطور
-const DEVELOPER_NAME = 'Hussein';
+// ضع اسمك هنا
+const DEVELOPER_NAME = 'Hussein Zahran';
+// ====================================
 
 let defaultProjects = [];
 
@@ -25,7 +23,6 @@ function saveProjects(projects) {
     localStorage.setItem('hussein_projects', JSON.stringify(projects));
 }
 
-// دوال للحصول على الصورة والاسم
 function getProfileImage() {
     return localStorage.getItem('hussein_avatar') || PROFILE_IMAGE_URL;
 }
@@ -34,7 +31,6 @@ function getDeveloperName() {
     return localStorage.getItem('hussein_name') || DEVELOPER_NAME;
 }
 
-// Make functions available globally
 window.getProjects = getProjects;
 window.saveProjects = saveProjects;
 window.ADMIN_CREDS = ADMIN_CREDS;
